@@ -1,0 +1,13 @@
+kalau nambah neg jgn lupa bg nya di hapus dan buat ulang
+Kalau gagal, brati gambar positive di buat ulang
+di resize ulang
+open create sampel ulang
+hapus info file
+buat positif.vec ulang
+hapus positiv vec 
+
+pos 1
+opencv_createsamples -img hand6070.jpg -bg bg.txt -info info/info.lst -pngoutput info -maxxangle 1 -maxyangle 1 -maxzangle 1.5 -num 3150
+opencv_createsamples -info info/info.lst -num 3150 -w 20 -h 20 -vec positives.vec
+opencv_traincascade -data data -vec positives.vec -bg bg.txt -numPos 2800 -numNeg 1200 -numStages 13 -w 23 -h 22
+opencv_traincascade -data data -vec positives.vec -bg bg.txt -numPos 2800 -numNeg 1200 -numStages 24 -numSplits 2 -minhitrate 0.999 -maxfalsealarm 0.5 -w 20 -h 20 -mode ALL
